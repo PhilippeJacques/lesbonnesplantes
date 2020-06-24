@@ -1,0 +1,27 @@
+                    <h1>Nouveau  Message</h1>
+                    <tr>
+                        <td>Plante : </td>
+                        <td><a href="{{ url('plant.show', {id: contact.plant.id, slug: contact.plant.slug })}}">{{contact.plant.title}}</a></td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>Prénom</td>
+                        <td>{{contact.firstname}}</td>
+                    </tr>
+                    <tr>
+                        <td>nom</td>
+                        <td>{{contact.lastname}}</td>
+                    </tr>
+                    <tr>
+                        <td>Telephone</td>
+                        <td>{{contact.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{contact.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Message</td>
+                        <td>{{contact.message | nl2br}}</td>
+                    </tr>
+

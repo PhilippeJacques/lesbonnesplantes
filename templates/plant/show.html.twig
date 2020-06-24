@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title plant.title %}
+{% block body %}
+
+
+        <div class="container mt-4">
+            <div class="jumbotron">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+
+            {% if not form.vars.valid %}
+                <div class="alert alert-danger"> Erreur veuillez respecter les types de données pour tous les champs indiquer</div>
+            {% endif %}
+
+        <div class="row">
+            <div class="col-md-8">
+                {% if plant.filename %}
+                    <img src="{{ vich_uploader_asset(plant, 'imageFile')}}"
+                         alt="card-img-top" style="height:auto; width:50%;">
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <h1>{{ plant.title }}</h1>
+                <a href="#" class="btn btn-primary">demander des informations</a>
+                <div id="contactForm" class="mt-4">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col">{{ form_row(form.firstname) }}</div>
+                        <div class="col">{{ form_row(form.lastname) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">{{ form_row(form.phone) }}</div>
+                        <div class="col">{{ form_row(form.email) }}</div>
+                    </div>
+                    {{ form_rest(form) }}
+                    <div class="form-group">
+                        <button class="btn btn-primary">Envoyer</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="nav nav-tabs" id="tab"></nav>
+    <h1>Composition</h1>
+    <div class="jumbotron">
+    <p>{{ plant.description | nl2br }}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Maladie Soigné</h1>
+            <div class="jumbotron">
+            <p>{{ plant.maladie | nl2br }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

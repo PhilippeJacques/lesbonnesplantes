@@ -1,0 +1,42 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block title 'Tous nos biens' %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="col">
+    {{ form_row(form.maladie) }}
+            </div>
+            <div class="col">
+                <button class="btn btn-primary">Rechercher</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
+    <div class="container mt-4">
+    <div class="jumbotron">
+        <h1>Listing des Plantes</h1> <h5>*Faites un clic sur le texte en bleu pour avoir plus d'informations*</h5>
+    </div>
+        <div class="row">
+    {% for plant in planted %}
+    <div class="col-md-4">
+        {% include 'plant/plant.html.twig' %}
+    </div>
+
+
+    {% endfor %}
+    </div>
+        <div class="pagination">
+            {{ knp_pagination_render(planted) }}
+        </div>
+    </div>
+{% endblock %}

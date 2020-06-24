@@ -1,0 +1,20 @@
+<div class="card mb-4">
+    {% if plant.filename %}
+        <img src="{{ vich_uploader_asset(plant, 'imageFile')}}"
+             alt="card-img-top" style="height:auto; width:100%;">
+    {% endif %}
+    <div class="card-body">
+
+        <h5 class="card-title">
+            <a href="{{ path('plant.show', {slug: plant.slug, id: plant.id}) }}">
+                {{ plant.title }}
+            </a>
+
+            <p class="card-text ">{{ plant.description | nl2br }}</p>
+        </h5>
+
+        <p class="card-text">{{ plant.maladie | nl2br }}</p>
+    </div>
+
+</div>
+

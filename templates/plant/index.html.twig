@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Gerer les Plantes' %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Gérer les plantes</h1>
+    <table class="table table-stripped">
+        <thead>
+        <tr>
+            <th>Titre de la plante</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for plan in plant %}
+        <tr>
+            <td>{{ plan.title }}</td>
+            <td>
+                <a href="{{ path('admin.plant.edit',{id: plan.id})}} " class="btn btn-secondary">éditer</a>
+                <form method ="post" action="{{ path('admin.plant.delete',{id: plan.id})}}" style="display: inline-block">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete'~plan.id)}}">
+                    <button class="btn btn-danger">Supprimer </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    <div class="text-right">
+        <a href="{{ path('admin.plant.new') }} " class="btn btn-primary">créer une nouvelle plante</a>
+    </div>
+
+</div>
+
+
+{% endblock %}

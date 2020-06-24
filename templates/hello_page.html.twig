@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="jumbotron text-center">hello everyone</div>
+
+    <div class="container">
+        <h2>Les derniers plantes</h2>
+        <div class="row flex">
+            {% for plan in plant %}
+                <div class="col-2">
+                 <div class="card">
+                     <div class="card-body">
+                         <h5 class="card-title">
+                        <a href="{{ path('plant.show',{id: plan.id,slug: plan.slug})  }}"> {{ plan.title }}</a>
+                         </h5>
+                     </div>
+                 </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock%}
